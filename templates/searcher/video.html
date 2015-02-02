@@ -1,0 +1,33 @@
+{% extends 'searcher/search.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="col-lg-8">
+        <div class="embed-responsive embed-responsive-4by3">
+            {{ video.embed_html|safe}}
+        </div>
+        <h1>{{video.title}} <small> by <a href="{{video.owner_url}}">{{video.owner_name}}</a> </small></h1>
+        <p>views = {{video.views_total}}</p>
+        <p>{{video.description|safe}}</p>
+
+    </div>
+    <div class="col-lg-4">
+        <h1>Related videos</h1>
+        {% for related_video in video.related.all %}
+        <hr>
+        <div class="row">
+            <div class="media">
+                <a class="media-left" href="/video/{{related_video.video_id}}">
+                    <img alt="" src="{{related_video.thumbnail_url}}"  style="width: 130px; height: 75px;">
+                </a>
+                <div class="media-body">
+                    <a href="/video/{{related_video.video_id}}">
+                        {{related_video.title}}
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

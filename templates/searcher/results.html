@@ -1,0 +1,23 @@
+{% extends 'searcher/search.html' %}
+{% block content %}
+    <div class="container">
+        {% for result in results %}
+        <hr>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="media">
+                    <a class="media-left" href="/video/{{result.video_id}}">
+                        <img alt="" src="{{result.thumbnail_url}}"  style="width: 300px; height: 200px;">
+                    </a>
+                    <div class="media-body">
+                        <a href="/video/{{result.video_id}}">
+                            <h4 class="media-heading">{{result.title}}</h4>
+                        </a>
+                        <p>{{result.description|safe}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

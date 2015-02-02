@@ -1,0 +1,1 @@
+web: gunicorn search_engine.wsgi  --log-file - --bind 0.0.0.0:8888

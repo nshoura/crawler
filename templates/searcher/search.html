@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Search/Crawl Engine{% endblock %}
+{%block header %}Search/Crawl{% endblock %}
+{%block form %}
+<div class="container">
+    <h1 style="text-align: center">Search</h1>
+    <form role="search" action ="/">
+        <div class="row">
+            <div class="input-group">
+                <div class="col-lg-11">
+                    <input type="text" class="form-control" name="query" value= "{% block query %}{% endblock %}">
+                </div>
+                <div class="col-lg-1">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit" value="Submit">Search</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="container">
+    <h1 style="text-align: center">Crawl</h1>
+    <form role="search" action ="/crawl">
+        <div class="row">
+            <div class="input-group">
+                <div class="col-lg-10">
+                    <input type="text" class="form-control" name="video_url_to_crawl" placeholder="Youtube or Dailymotion Video URL">
+                </div>
+                <div class="col-lg-1">
+                     <input type="text" class="form-control" name="depth" placeholder="depth">
+                </div>
+                <div class="col-lg-1">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit" value="Submit">Crawl</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
