@@ -38,7 +38,12 @@ def parse_video(video_url):
         try:
             video=Video.objects.get(video_id = video_url.split('_')[0].split('/')[-1])
         except Video.DoesNotExist:
+            try:
             video=Video(video_id = video_url.split('_')[0].split('/')[-1], site=Site.objects.get(name='dailymotion.com'))
+            except Site.DoesNotExist:
+                site=Site(name = 'dailymotion.com')
+                site.save()
+                video=Video(video_id = video_url.split('_')[0].split('/')[-1], site=Site.objects.get(name='dailymotion.com'))
         video.video_api_url = "https://api.dailymotion.com/video/" + video.video_id
         video.video_url = "http://www.dailymotion.com/video/" + video.video_id
 
@@ -60,6 +65,10 @@ def parse_video(video_url):
             video=Video.objects.get(video_id = video_url.split('=')[1].split('&')[0])
         except Video.DoesNotExist:
             video=Video(video_id = video_url.split('=')[1].split('&')[0], site=Site.objects.get(name='youtube.com'))
+            except Site.DoesNotExist:
+                site=Site(name = 'youtube.com')
+                site.save()
+                video=Video(video_id = video_url.split('=')[1].split('&')[0], site=Site.objects.get(name='youtube.com'))
         video.video_api_url='https://www.googleapis.com/youtube/v3/videos?key=AIzaSyBp-A5_icKU-m0KuFLf0wOvQwbayFC-JEM&id='+video.video_id
         video.video_url="http://www.youtube.com/watch?v="+video.video_id
 
