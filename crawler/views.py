@@ -18,8 +18,8 @@ def crawl(request):
         if not depth.isdigit():
             return render(request, 'searcher/error.html', {'error_message':'Please enter a number in the crawling depth field between 0 and 50!'})
         depth=int(depth)
-        if depth not in xrange(1, 5):
-            return render(request, 'searcher/error.html', {'error_message':'The server is not powerful enough to handle such a depth! Please enter a number in the crawling depth field between 1 and 4'})
+        if depth not in xrange(1, 4):
+            return render(request, 'searcher/error.html', {'error_message':'The server is not powerful enough to handle such a depth! Please enter a number in the crawling depth field between 1 and 3'})
         video_url=video_url_to_crawl.replace('%3A',':').replace('%2F','/')
         if 'dailymotion.com' in video_url:
             parse_video(video_url)
