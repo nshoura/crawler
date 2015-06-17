@@ -1,1 +1,1 @@
-web: gunicorn search_engine.wsgi --timeout 240 --keep-alive 5 --log-level debug
+web: gunicorn search_engine.wsgi --timeout 120 --keep-alive 5
