@@ -1,4 +1,4 @@
-{% extends 'searcher/search.html' %}
+{% extends 'searcher_crawler/search_crawl.html' %}
 
 {% block content %}
 <div class="container">
@@ -7,8 +7,10 @@
             {{ video.embed_html|safe}}
         </div>
         <h1>{{video.title}} <small> by <a href="{{video.owner_url}}">{{video.owner_name}}</a> </small></h1>
-        <p>views = {{video.views_total}}</p>
-        <p>{{video.description|safe}}</p>
+        <p>views: {{video.views_total}}</p>
+        <div>
+            <p>{{video.description|safe}}</p>
+        </div>
 
     </div>
     <div class="col-lg-4">
