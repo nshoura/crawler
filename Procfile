@@ -1,1 +1,1 @@
-web: gunicorn search_engine.wsgi --timeout 120 --keep-alive 5
+web: gunicorn search_engine.wsgi --timeout 360 --keep-alive 5
